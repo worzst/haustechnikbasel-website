@@ -1,0 +1,103 @@
+---
+---
+<section id="referenzen" class="refs-section">
+  <div class="refs-inner">
+    <div class="head">
+      <div>
+        <span class="section-label">Referenzen</span>
+        <h2 class="title">Aus unserer Werkstatt.</h2>
+      </div>
+      <p class="head-sub">Eine Auswahl der letzten 24 Monate. Alle Projekte im Raum Basel.</p>
+    </div>
+
+    <div class="grid reveal">
+      <div class="ref-card">
+        <div class="img-ph" style="aspect-ratio:4/3; border-radius:6px 6px 0 0;">
+          <span class="img-tag">Badumbau in Riehen · 2025</span>
+        </div>
+        <div class="meta">
+          <div class="ref-tag">REF-248 · 4 WOCHEN</div>
+          <div class="ref-title">Altbau-Bad, Komplett-Sanierung</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="img-ph" style="aspect-ratio:4/3; border-radius:6px 6px 0 0; background:linear-gradient(135deg,#b8c0cc,#8f9aaa,#5e697a);">
+          <span class="img-tag">Badumbau in Allschwil · 2025</span>
+        </div>
+        <div class="meta">
+          <div class="ref-tag">REF-251 · 5 WOCHEN</div>
+          <div class="ref-title">Familienbad mit Walk-in-Dusche</div>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="img-ph" style="aspect-ratio:4/3; border-radius:6px 6px 0 0; background:linear-gradient(135deg,#d0cfc8,#b0afa4,#7a7a6e);">
+          <span class="img-tag">Badumbau Basel-Stadt · 2024</span>
+        </div>
+        <div class="meta">
+          <div class="ref-tag">REF-253 · 3 WOCHEN</div>
+          <div class="ref-title">Mini-Bad 4.2 m², wandhängend</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="/badumbau#projekte" class="btn btn-primary">
+        Mehr zu Badsanierung
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .refs-section {
+    padding: 96px 48px;
+    background: var(--bg-white);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .refs-inner { max-width: 1440px; margin: 0 auto; }
+
+  .head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 48px; flex-wrap: wrap; gap: 24px;
+  }
+  .title {
+    font-size: 48px; font-weight: 600;
+    letter-spacing: -0.025em; line-height: 1.02;
+    color: var(--ink); margin: 0;
+  }
+  .head-sub { font-size: 14px; color: var(--ink-2); max-width: 320px; text-align: right; line-height: 1.6; margin: 0; }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+
+  .ref-card {
+    border-radius: var(--radius); overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .meta { padding: 18px 20px; background: var(--bg-white); }
+  .ref-tag {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-3); margin-bottom: 6px;
+  }
+  .ref-title {
+    font-size: 17px; font-weight: 600;
+    letter-spacing: -0.01em; color: var(--ink);
+  }
+
+  .cta-row { margin-top: 40px; display: flex; justify-content: flex-end; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+    .head-sub { text-align: left; }
+  }
+  @media (max-width: 600px) {
+    .refs-section { padding: 72px 20px; }
+    .title { font-size: 36px; }
+  }
+</style>

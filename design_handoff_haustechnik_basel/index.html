@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haustechnik Basel – Sanitär & Badumbau in Basel</title>
+<meta name="description" content="Lokaler Sanitär- und Haustechnikbetrieb in Basel. Spezialisiert auf hochwertige Badumbauten. Planung, Sanitär und Koordination aus einer Hand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1e3a8a;
+    --blue-hover: #182d70;
+    --blue-bg: rgba(30,58,138,0.08);
+    --ink: #0a0e1a;
+    --ink-2: #4a5168;
+    --ink-3: #8a90a0;
+    --bg: #f4f5f7;
+    --bg-white: #ffffff;
+    --line: #d8dce4;
+    --radius: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  /* HEADER */
+  .header {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .logo-icon { width: 26px; height: 26px; background: var(--blue); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+  .logo-name { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+  .logo-sub { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-3); }
+  nav { display: flex; gap: 28px; align-items: center; }
+  nav a { color: var(--ink-2); text-decoration: none; font-size: 14px; transition: color 0.15s; }
+  nav a:hover, nav a.active { color: var(--blue); }
+
+  /* BUTTONS */
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; font-size: 14px; font-weight: 500; border: none; border-radius: var(--radius); cursor: pointer; transition: background 0.15s, transform 0.1s; text-decoration: none; font-family: inherit; }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--blue); color: #fff; }
+  .btn-primary:hover { background: var(--blue-hover); }
+  .btn-ghost { background: var(--bg-white); color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .btn-sm { padding: 9px 16px; font-size: 13px; }
+
+  /* TAG */
+  .tag { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; background: var(--blue-bg); color: var(--blue); border-radius: 999px; font-size: 12px; font-weight: 500; }
+  .tag-dot { width: 6px; height: 6px; background: var(--blue); border-radius: 50%; }
+
+  /* IMG PLACEHOLDER */
+  .img-ph { background: linear-gradient(135deg, #c8cdd6 0%, #a8b0c0 50%, #6b7387 100%); border-radius: var(--radius); position: relative; overflow: hidden; }
+  .img-ph::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(45deg, transparent 49.5%, rgba(255,255,255,0.06) 49.5%, rgba(255,255,255,0.06) 50.5%, transparent 50.5%); background-size: 12px 12px; }
+  .img-tag { position: absolute; bottom: 12px; left: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; background: rgba(10,14,26,0.7); color: #fff; border-radius: 3px; z-index: 2; backdrop-filter: blur(4px); }
+
+  /* SECTION */
+  section { padding: 96px 48px; }
+  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--blue); text-transform: uppercase; margin-bottom: 12px; }
+  .section-title { font-size: 48px; font-weight: 600; letter-spacing: -0.025em; line-height: 1.02; }
+
+  /* HERO */
+  .hero { padding: 80px 48px 96px; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
+  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 24px; }
+  .hero-title { font-size: 72px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.02; margin-bottom: 28px; }
+  .hero-title span { color: var(--blue); }
+  .hero-sub { font-size: 20px; line-height: 1.55; color: var(--ink-2); margin-bottom: 40px; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-img { position: relative; }
+
+  /* TRUST STRIP */
+  .trust-strip {
+    background: var(--bg-white);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 32px 48px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+  .trust-item { display: flex; align-items: flex-start; gap: 14px; }
+  .trust-icon { width: 40px; height: 40px; background: var(--blue-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .trust-label { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 2px; }
+  .trust-sub { font-size: 12px; color: var(--ink-2); line-height: 1.4; }
+
+  /* SERVICES (KACHELN) */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .service-card { background: var(--bg-white); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; transition: border-color 0.2s, box-shadow 0.2s; }
+  .service-card:hover { border-color: var(--blue); box-shadow: 0 4px 20px -8px rgba(30,58,138,0.2); }
+  .service-card.featured { border-color: var(--blue); background: var(--blue); color: #fff; }
+  .service-card.featured .service-desc { color: rgba(255,255,255,0.8); }
+  .service-card.featured .section-label { color: rgba(255,255,255,0.6); }
+  .service-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 20px; }
+  .service-badge.primary { background: rgba(255,255,255,0.15); color: #fff; }
+  .service-badge.secondary { background: var(--bg); color: var(--ink-2); }
+  .service-title { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .service-desc { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin-bottom: 28px; }
+  .service-link { font-size: 14px; font-weight: 500; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; }
+  .service-link:hover { border-color: rgba(255,255,255,0.8); }
+  .service-link-muted { font-size: 14px; font-weight: 500; color: var(--ink-2); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+
+  /* PROCESS */
+  .process-mini { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 56px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--bg-white); }
+  .process-mini-item { padding: 28px; border-right: 1px solid var(--line); position: relative; }
+  .process-mini-item:last-child { border-right: none; }
+  .process-mini-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); margin-bottom: 14px; }
+  .process-mini-title { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .process-mini-desc { font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+  .process-connector { position: absolute; right: -10px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; background: var(--bg-white); border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; }
+
+  /* REFERENCES TEASER */
+  .refs-bg { background: var(--bg-white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .refs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .ref-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+  .ref-meta { padding: 18px 20px; background: var(--bg-white); }
+  .ref-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); margin-bottom: 6px; }
+  .ref-title { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .refs-cta { margin-top: 40px; display: flex; justify-content: flex-end; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: center; }
+  .about-img { aspect-ratio: 3/4; border-radius: var(--radius); }
+  .about-img.alt-bg { background: linear-gradient(135deg, #d0d4dd 0%, #a8afbf 50%, #72788c 100%); }
+  .about-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 8px; background: rgba(10,14,26,0.65); color: #fff; border-radius: 3px; backdrop-filter: blur(4px); width: fit-content; margin-top: 12px; }
+  .about-sub { font-size: 18px; line-height: 1.6; color: var(--ink-2); margin: 24px 0 36px; }
+  .about-points { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+  .about-point { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.5; }
+  .about-check { width: 20px; height: 20px; border-radius: 50%; background: var(--blue-bg); color: var(--blue); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+  .region-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .region-chip { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--ink-2); }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 56px 48px 32px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+  .footer-col-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 14px; }
+  .footer-text { font-size: 13px; line-height: 1.85; }
+  hr.footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 40px 0 20px; }
+  .footer-bottom { font-size: 12px; display: flex; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="index.html" class="logo">
+    <div class="logo-icon">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3L3 11 M3 7L11 7 M11 3L11 11" stroke="#fff" stroke-width="2"/></svg>
+    </div>
+    <div>
+      <div class="logo-name">Haustechnik Basel</div>
+      <div class="logo-sub">SANITÄR · BADUMBAU</div>
+    </div>
+  </a>
+  <nav>
+    <a href="index.html" class="active">Startseite</a>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#ueber-uns">Über uns</a>
+    <a href="badumbau.html" style="color:var(--blue); font-weight:500;">Badumbau</a>
+    <a href="tel:+41612000000" class="btn btn-ghost btn-sm">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 1.5h2l1 3-1.5 1A8 8 0 0 0 8 9.5l1-1.5 3 1v2a1 1 0 0 1-1 1A10 10 0 0 1 1 2.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.3"/></svg>
+      061 200 00 00
+    </a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">Lokaler Fachbetrieb · Basel & Umgebung</div>
+      <h1 class="hero-title">
+        Haustechnik<br>&amp; Sanitär in<br>Basel — <span>Badumbau</span><br>aus einer Hand.
+      </h1>
+      <p class="hero-sub">
+        Planung, Sanitär und Koordination in einer einzigen Verantwortung — im Raum Basel seit 2008.
+      </p>
+      <div class="hero-ctas">
+        <a href="badumbau.html" class="btn btn-primary">
+          Badumbau anfragen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <a href="#leistungen" class="btn btn-ghost">Alle Leistungen</a>
+      </div>
+    </div>
+
+    <div class="hero-img">
+      <div class="img-ph" style="aspect-ratio: 4/5; height: 560px;">
+        <span class="img-tag">FOTO INHABER / TEAM</span>
+      </div>
+      <!-- Floating stat card -->
+      <div style="position:absolute; bottom:32px; left:-32px; background:var(--bg-white); border:1px solid var(--line); border-radius:var(--radius); padding:20px 24px; min-width:200px; box-shadow:0 8px 32px -8px rgba(10,14,26,0.15);">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-3); margin-bottom:8px;">SEIT 2008 IN BASEL</div>
+        <div style="font-size:32px; font-weight:700; letter-spacing:-0.02em; color:var(--blue); line-height:1;">340<span style="font-size:18px;">+</span></div>
+        <div style="font-size:13px; color:var(--ink-2); margin-top:4px;">Bäder umgebaut</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="var(--blue)" stroke-width="1.5"/><path d="M7 10l2.5 2.5 4-5" stroke="var(--blue)" stroke-width="1.5"/></svg>
+    </div>
+    <div>
+      <div class="trust-label">Lokaler Fachbetrieb</div>
+      <div class="trust-sub">In Basel und Umgebung verwurzelt</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l1.5 4.5H17l-4 3 1.5 4.5L10 11l-4.5 3L7 9.5 3 6.5h5.5z" stroke="var(--blue)" stroke-width="1.5"/></svg>
+    </div>
+    <div>
+      <div class="trust-label">Persönlicher Kontakt</div>
+      <div class="trust-sub">Von Planung bis Fertigstellung</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="12" rx="1" stroke="var(--blue)" stroke-width="1.5"/><path d="M7 5V4a3 3 0 0 1 6 0v1" stroke="var(--blue)" stroke-width="1.5"/></svg>
+    </div>
+    <div>
+      <div class="trust-label">Transparente Offerten</div>
+      <div class="trust-sub">Keine versteckten Kosten</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="var(--blue)" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="var(--blue)" stroke-width="1.5"/></svg>
+    </div>
+    <div>
+      <div class="trust-label">Flexible Termine</div>
+      <div class="trust-sub">Nach Ihren Arbeitszeiten möglich</div>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3L12 8h5l-4 3 1.5 5L10 13l-4.5 3L7 11 3 8h5z" stroke="var(--blue)" stroke-width="1.5"/></svg>
+    </div>
+    <div>
+      <div class="trust-label">4.9 / 5 Bewertung</div>
+      <div class="trust-sub">47 Google-Rezensionen</div>
+    </div>
+  </div>
+</div>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px;">
+    <div>
+      <div class="section-label">Kernleistungen</div>
+      <h2 class="section-title">Was wir für Sie tun.</h2>
+    </div>
+    <p style="font-size:14px; color:var(--ink-2); max-width:340px; text-align:right; line-height:1.6;">
+      Unser Fokus liegt auf Badumbauten. Darüber hinaus bieten wir Sanitärarbeiten und bald auch Heizungstechnik an.
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <!-- FEATURED: Badumbau -->
+    <div class="service-card featured">
+      <div class="service-badge primary">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+        Kernkompetenz
+      </div>
+      <div class="section-label" style="color:rgba(255,255,255,0.55);">01 — Badumbau</div>
+      <h3 class="service-title">Badsanierung &amp;<br>Badumbau</h3>
+      <p class="service-desc">
+        Komplett-Badumbau im Raum Basel. Planung, Sanitär, Koordination aller Gewerke — und eine Fix-Offerte mit einem einzigen Ansprechpartner.
+      </p>
+      <a href="badumbau.html" class="service-link">
+        Mehr erfahren
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+
+    <!-- Sanitär -->
+    <div class="service-card">
+      <div class="service-badge secondary">02 — Sanitär</div>
+      <h3 class="service-title" style="color:var(--ink);">Sanitärarbeiten</h3>
+      <p class="service-desc">
+        Tropfende Armaturen, defekte Spülung, Wasserrohr-Schaden — wir erledigen kleinere Sanitärarbeiten im Raum Basel schnell und zuverlässig.
+      </p>
+      <p style="font-size:13px; color:var(--ink-3); margin-bottom:0; font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:0.06em;">
+        Keine eigene Seite — direkt anfragen
+      </p>
+    </div>
+
+    <!-- Heizung -->
+    <div class="service-card" style="opacity:0.7;">
+      <div class="service-badge secondary">03 — Heizung</div>
+      <h3 class="service-title" style="color:var(--ink);">Heizung &amp;<br>Wärmepumpe</h3>
+      <p class="service-desc">
+        Heizungssanierung, Wärmepumpen-Installation und Unterhalt — dieses Angebot bauen wir derzeit auf. Kontaktieren Sie uns für Anfragen.
+      </p>
+      <div style="display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--ink-3);">
+        <span style="width:8px; height:8px; border-radius:50%; background:var(--ink-3); display:inline-block;"></span>
+        Demnächst verfügbar
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS MINI -->
+<section style="padding:96px 48px; background:var(--bg-white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="section-label">So arbeiten wir</div>
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px;">
+    <h2 class="section-title">Ablauf eines Projekts. <span style="color:var(--ink-3);">In vier Schritten.</span></h2>
+    <a href="badumbau.html#prozess" class="btn btn-ghost btn-sm">Ausführliche Version →</a>
+  </div>
+
+  <div class="process-mini">
+    <div class="process-mini-item">
+      <div class="process-mini-num">01</div>
+      <div class="process-mini-title">Anfrage</div>
+      <p class="process-mini-desc">Formular oder Anruf — wir hören zu, statt sofort zu verkaufen.</p>
+      <div class="process-connector">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 5h4M5 3l2 2-2 2" stroke="var(--ink-3)" stroke-width="1.2"/></svg>
+      </div>
+    </div>
+    <div class="process-mini-item">
+      <div class="process-mini-num">02</div>
+      <div class="process-mini-title">Vor-Ort-Termin</div>
+      <p class="process-mini-desc">Wir messen, beraten und nehmen alle Anforderungen kostenlos auf.</p>
+      <div class="process-connector">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 5h4M5 3l2 2-2 2" stroke="var(--ink-3)" stroke-width="1.2"/></svg>
+      </div>
+    </div>
+    <div class="process-mini-item">
+      <div class="process-mini-num">03</div>
+      <div class="process-mini-title">Fix-Offerte</div>
+      <p class="process-mini-desc">Detailliert, mit Terminplan und Kostenrahmen. Keine Überraschungen.</p>
+      <div class="process-connector">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 5h4M5 3l2 2-2 2" stroke="var(--ink-3)" stroke-width="1.2"/></svg>
+      </div>
+    </div>
+    <div class="process-mini-item">
+      <div class="process-mini-num">04</div>
+      <div class="process-mini-title">Ausführung &amp; Abnahme</div>
+      <p class="process-mini-desc">Sauber, termintreu und mit gemeinsamer Schlussabnahme.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENZEN TEASER -->
+<section class="refs-bg" id="referenzen">
+  <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+    <div>
+      <div class="section-label">Referenzen</div>
+      <h2 class="section-title">Aus unserer Werkstatt.</h2>
+    </div>
+    <p style="font-size:14px; color:var(--ink-2); max-width:320px; text-align:right; line-height:1.6;">
+      Eine Auswahl der letzten 24 Monate. Alle Projekte im Raum Basel.
+    </p>
+  </div>
+
+  <div class="refs-grid">
+    <div class="ref-card">
+      <div class="img-ph" style="aspect-ratio:4/3; border-radius:6px 6px 0 0;">
+        <span class="img-tag">Badumbau in Riehen · 2025</span>
+      </div>
+      <div class="ref-meta">
+        <div class="ref-tag">REF-248 · 4 WOCHEN</div>
+        <div class="ref-title">Altbau-Bad, Komplett-Sanierung</div>
+      </div>
+    </div>
+    <div class="ref-card">
+      <div class="img-ph" style="aspect-ratio:4/3; border-radius:6px 6px 0 0; background:linear-gradient(135deg,#b8c0cc,#8f9aaa,#5e697a);">
+        <span class="img-tag">Badumbau in Allschwil · 2025</span>
+      </div>
+      <div class="ref-meta">
+        <div class="ref-tag">REF-251 · 5 WOCHEN</div>
+        <div class="ref-title">Familienbad mit Walk-in-Dusche</div>
+      </div>
+    </div>
+    <div class="ref-card">
+      <div class="img-ph" style="aspect-ratio:4/3; border-radius:6px 6px 0 0; background:linear-gradient(135deg,#d0cfc8,#b0afa4,#7a7a6e);">
+        <span class="img-tag">Badumbau Basel-Stadt · 2024</span>
+      </div>
+      <div class="ref-meta">
+        <div class="ref-tag">REF-253 · 3 WOCHEN</div>
+        <div class="ref-title">Mini-Bad 4.2 m², wandhängend</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs-cta">
+    <a href="badumbau.html#projekte" class="btn btn-primary">
+      Mehr zu Badsanierung
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ÜBER UNS -->
+<section id="ueber-uns">
+  <div class="about-grid">
+    <div>
+      <div class="img-ph alt-bg" style="height:480px;">
+        <span class="img-tag">FOTO INHABER / TEAM</span>
+      </div>
+    </div>
+    <div>
+      <div class="section-label">Über uns &amp; Region</div>
+      <h2 class="section-title">Lokaler Betrieb. Persönliche Verantwortung.</h2>
+      <p class="about-sub">
+        Seit 2008 führen wir Sanitär- und Haustechnikarbeiten im Raum Basel durch. Was mit einfachen Reparaturen begann, ist heute ein spezialisierter Betrieb für Komplett-Badumbauten mit klarem Fokus auf Qualität und Termintreue.
+      </p>
+
+      <div class="about-points">
+        <div class="about-point">
+          <div class="about-check">✓</div>
+          <span>Persönlicher Ansprechpartner für jedes Projekt</span>
+        </div>
+        <div class="about-point">
+          <div class="about-check">✓</div>
+          <span>Saubere Baustellen als Selbstverständnis</span>
+        </div>
+        <div class="about-point">
+          <div class="about-check">✓</div>
+          <span>Termintreue und proaktive Kommunikation</span>
+        </div>
+        <div class="about-point">
+          <div class="about-check">✓</div>
+          <span>Fix-Offerten ohne versteckte Kosten</span>
+        </div>
+        <div class="about-point">
+          <div class="about-check">✓</div>
+          <span>Koordination aller Gewerke aus einer Hand</span>
+        </div>
+        <div class="about-point">
+          <div class="about-check">✓</div>
+          <span>Termine nach Ihren Arbeitszeiten möglich</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink-3); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">Unser Einsatzgebiet</div>
+        <div class="region-list">
+          <span class="region-chip">Basel-Stadt</span>
+          <span class="region-chip">Riehen</span>
+          <span class="region-chip">Bettingen</span>
+          <span class="region-chip">Allschwil</span>
+          <span class="region-chip">Binningen</span>
+          <span class="region-chip">Bottmingen</span>
+          <span class="region-chip">Münchenstein</span>
+          <span class="region-chip">Reinach</span>
+          <span class="region-chip">Birsfelden</span>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;">
+        <a href="badumbau.html" class="btn btn-primary">
+          Badumbau anfragen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:20px;">
+        <div class="logo-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3L3 11 M3 7L11 7 M11 3L11 11" stroke="#fff" stroke-width="2"/></svg></div>
+        <div style="color:#fff; font-size:16px; font-weight:600;">Haustechnik Basel</div>
+      </div>
+      <p class="footer-text" style="max-width:300px;">Sanitär und Badumbau im Raum Basel. Persönlich, lokal, termintreu — seit 2008.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Kontakt</div>
+      <div class="footer-text">
+        061 200 00 00<br>
+        info@haustechnikbasel.ch<br>
+        Musterstrasse 1<br>
+        4051 Basel
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Region</div>
+      <div class="footer-text">Basel-Stadt<br>Riehen, Bettingen<br>Allschwil, Binningen<br>Münchenstein, Reinach<br>Birsfelden</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Rechtliches</div>
+      <div class="footer-text">
+        <a href="#" style="color:inherit; text-decoration:none;">Impressum</a><br>
+        <a href="#" style="color:inherit; text-decoration:none;">Datenschutz</a><br>
+        Handelsregister CH-…<br>
+        MwSt-Nr. CHE-…
+      </div>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <span>© 2026 Haustechnik Basel</span>
+    <span class="mono" style="font-size:11px;">haustechnikbasel.ch</span>
+  </div>
+</footer>
+
+</body>
+</html>

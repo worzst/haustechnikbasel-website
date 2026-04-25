@@ -1,0 +1,145 @@
+---
+interface Props {
+  activePage?: 'home' | 'badumbau' | 'legal';
+}
+const { activePage = 'home' } = Astro.props;
+const p = activePage === 'home' ? '' : '/';
+---
+<header class="nav-header" id="nav-header">
+  <a href="/" class="logo">
+    <div class="logo-icon">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M3 3L3 11 M3 7L11 7 M11 3L11 11" stroke="#fff" stroke-width="2"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-name">Haustechnik Basel</div>
+      <div class="logo-sub">SANITÄR · BADUMBAU</div>
+    </div>
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="nav-links" id="nav-links">
+    {activePage === 'badumbau' ? (
+      <>
+        <a href="/">Startseite</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#prozess">Ablauf</a>
+        <a href="#projekte">Projekte</a>
+        <a href="#faq">FAQ</a>
+      </>
+    ) : (
+      <>
+        <a href={p || '/'} class={activePage === 'home' ? 'active' : ''}>Startseite</a>
+        <a href={`${p}#leistungen`}>Leistungen</a>
+        <a href={`${p}#ueber-uns`}>Über uns</a>
+        <a href="/badumbau" class="nav-cta-link">Badumbau</a>
+      </>
+    )}
+    <a href="tel:+41612000000" class="btn btn-ghost btn-sm phone-link">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M3 1.5h2l1 3-1.5 1A8 8 0 0 0 8 9.5l1-1.5 3 1v2a1 1 0 0 1-1 1A10 10 0 0 1 1 2.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.3"/>
+      </svg>
+      061 200 00 00
+    </a>
+  </nav>
+</header>
+
+<style>
+  .nav-header {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; color: inherit;
+  }
+  .logo-icon {
+    width: 26px; height: 26px;
+    background: var(--blue);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-name { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .logo-sub { font-family: var(--mono); font-size: 10px; color: var(--ink-3); }
+
+  .nav-links {
+    display: flex; gap: 28px; align-items: center;
+  }
+  .nav-links a {
+    color: var(--ink-2); font-size: 14px;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--blue); font-weight: 500; }
+  .nav-cta-link { color: var(--blue) !important; font-weight: 500 !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--ink);
+    border-radius: 1px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 768px) {
+    .nav-header { padding: 14px 20px; }
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--line);
+      flex-direction: column;
+      padding: 12px 20px 20px;
+      gap: 0;
+      align-items: flex-start;
+      box-shadow: 0 8px 24px -8px rgba(10,14,26,0.12);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+      padding: 12px 0; width: 100%;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+    .nav-links a:last-child { border-bottom: none; }
+    .phone-link { margin-top: 8px; border-bottom: none !important; }
+  }
+</style>
+
+<script>
+  const hamburger = document.getElementById('hamburger')!;
+  const nav = document.getElementById('nav-links')!;
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    nav.classList.toggle('open');
+  });
+
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      nav.classList.remove('open');
+    });
+  });
+</script>

@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Astro generated files
+.astro/
+
+# Environment variables — never commit these
+.env
+.env.local
+.dev.vars
+
+# Cloudflare
+.wrangler/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Claude Code
+.claude/

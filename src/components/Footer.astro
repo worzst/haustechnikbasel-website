@@ -1,0 +1,124 @@
+---
+---
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="brand">
+          <div class="brand-icon">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 3L3 11 M3 7L11 7 M11 3L11 11" stroke="#fff" stroke-width="2"/>
+            </svg>
+          </div>
+          <span class="brand-name">Haustechnik Basel</span>
+        </div>
+        <p class="tagline">Sanitär und Badumbau im Raum Basel. Persönlich, lokal, termintreu — seit 2008.</p>
+      </div>
+
+      <div>
+        <div class="col-title">Kontakt</div>
+        <div class="col-text">
+          061 200 00 00<br />
+          info@haustechnikbasel.ch<br />
+          Musterstrasse 1<br />
+          4051 Basel
+        </div>
+      </div>
+
+      <div>
+        <div class="col-title">Region</div>
+        <div class="col-text">
+          Basel-Stadt<br />
+          Riehen, Bettingen<br />
+          Allschwil, Binningen<br />
+          Münchenstein, Reinach<br />
+          Birsfelden
+        </div>
+      </div>
+
+      <div>
+        <div class="col-title">Rechtliches</div>
+        <div class="col-text">
+          <a href="/impressum">Impressum</a><br />
+          <a href="/datenschutz">Datenschutz</a><br />
+          Handelsregister CH-…<br />
+          MwSt-Nr. CHE-…
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="bottom">
+      <span>© 2026 Haustechnik Basel</span>
+      <span class="mono" style="font-size:11px;">haustechnikbasel.ch</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    padding: 56px 48px 32px;
+  }
+
+  .footer-inner { max-width: 1440px; margin: 0 auto; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 16px;
+  }
+  .brand-icon {
+    width: 26px; height: 26px;
+    background: var(--blue); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .brand-name { color: #fff; font-size: 15px; font-weight: 600; }
+
+  .tagline {
+    font-size: 13px; line-height: 1.75;
+    max-width: 280px;
+  }
+
+  .col-title {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 14px;
+  }
+
+  .col-text {
+    font-size: 13px; line-height: 1.9;
+  }
+  .col-text a { color: rgba(255,255,255,0.6); transition: color 0.15s; }
+  .col-text a:hover { color: rgba(255,255,255,0.9); }
+
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 40px 0 20px;
+  }
+
+  .bottom {
+    font-size: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  @media (max-width: 600px) {
+    .footer { padding: 48px 20px 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+</style>

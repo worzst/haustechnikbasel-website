@@ -1,0 +1,127 @@
+---
+---
+<section id="projekte" class="projects-section">
+  <div class="projects-inner">
+    <div class="head">
+      <div>
+        <span class="section-label">04 — Referenzen</span>
+        <h2 class="title">Aktuelle Projekte aus Basel.</h2>
+      </div>
+      <a href="#anfrage" class="btn btn-ghost btn-sm">
+        Eigenes Projekt anfragen
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+
+    <div class="grid reveal">
+      <div class="pcard">
+        <div class="img-ph" style="aspect-ratio:4/3; border-radius:6px 6px 0 0;">
+          <span class="img-tag">REF-248</span>
+        </div>
+        <div class="pmeta">
+          <div class="ptag">4 WOCHEN · ABGESCHLOSSEN</div>
+          <div class="ptitle">Badumbau in Riehen</div>
+          <p class="pdesc">Altbau-Bad, komplette Sanierung inkl. Plattenleger und Elektriker</p>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="img-ph" style="aspect-ratio:4/3; border-radius:6px 6px 0 0; background:linear-gradient(135deg,#b8c0cc,#8f9aaa,#5e697a);">
+          <span class="img-tag">REF-251</span>
+        </div>
+        <div class="pmeta">
+          <div class="ptag">5 WOCHEN · ABGESCHLOSSEN</div>
+          <div class="ptitle">Badumbau in Allschwil</div>
+          <p class="pdesc">Familienbad mit zweitem WC, Walk-in-Dusche, wandhängende WC</p>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="img-ph" style="aspect-ratio:4/3; border-radius:6px 6px 0 0; background:linear-gradient(135deg,#d0cfc8,#b0afa4,#7a7a6e);">
+          <span class="img-tag">REF-253</span>
+        </div>
+        <div class="pmeta">
+          <div class="ptag">3 WOCHEN · ABGESCHLOSSEN</div>
+          <div class="ptitle">Badumbau Basel-Stadt</div>
+          <p class="pdesc">Mini-Bad 4.2 m², vollständig wandhängend optimiert</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial reveal" data-delay="100">
+      <div>
+        <p class="quote">«Termingerecht, sauber, eine klare Offerte. Wir hätten nicht gedacht, dass ein Badumbau so unaufgeregt sein kann.»</p>
+        <div class="author">— Familie K., Riehen · Komplett-Umbau 2025</div>
+      </div>
+      <div class="rating-block">
+        <div class="rating-num">4.9<span class="rating-den">/5</span></div>
+        <div class="rating-sub">Aus 47 Google-Bewertungen</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section { padding: 96px 48px; background: var(--bg); }
+  .projects-inner { max-width: 1440px; margin: 0 auto; }
+
+  .head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 48px; flex-wrap: wrap; gap: 24px;
+  }
+  .title {
+    font-size: 48px; font-weight: 600;
+    letter-spacing: -0.025em; line-height: 1.02;
+    color: var(--ink); margin: 0;
+  }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  .pcard { border-radius: var(--radius); overflow: hidden; }
+  .pmeta {
+    padding: 20px 22px;
+    background: var(--bg-white);
+    border: 1px solid var(--line); border-top: none;
+  }
+  .ptag {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-3); margin-bottom: 8px;
+  }
+  .ptitle {
+    font-size: 18px; font-weight: 600;
+    letter-spacing: -0.01em; margin-bottom: 6px; color: var(--ink);
+  }
+  .pdesc { font-size: 14px; color: var(--ink-2); line-height: 1.5; margin: 0; }
+
+  .testimonial {
+    padding: 40px; border-radius: var(--radius);
+    background: var(--blue); color: #fff;
+    display: grid; grid-template-columns: 2fr 1fr; gap: 48px;
+    align-items: center; margin-top: 48px;
+  }
+  .quote {
+    font-size: 22px; font-weight: 500; line-height: 1.45;
+    letter-spacing: -0.01em; margin: 0;
+  }
+  .author {
+    font-family: var(--mono); font-size: 12px;
+    margin-top: 24px; opacity: 0.7;
+  }
+  .rating-block { text-align: right; }
+  .rating-num {
+    font-size: 56px; font-weight: 700;
+    letter-spacing: -0.03em; line-height: 1;
+  }
+  .rating-den { font-size: 24px; opacity: 0.6; }
+  .rating-sub { font-size: 13px; opacity: 0.8; margin-top: 4px; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+    .testimonial { grid-template-columns: 1fr; gap: 24px; }
+    .rating-block { text-align: left; }
+  }
+  @media (max-width: 600px) {
+    .projects-section { padding: 72px 20px; }
+    .title { font-size: 36px; }
+  }
+</style>

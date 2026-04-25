@@ -1,0 +1,110 @@
+---
+const steps = [
+  { n: '01', title: 'Anfrage', desc: 'Formular oder Anruf — wir hören zu, statt sofort zu verkaufen.' },
+  { n: '02', title: 'Vor-Ort-Termin', desc: 'Wir messen, beraten und nehmen alle Anforderungen kostenlos auf.' },
+  { n: '03', title: 'Fix-Offerte', desc: 'Detailliert, mit Terminplan und Kostenrahmen. Keine Überraschungen.' },
+  { n: '04', title: 'Ausführung & Abnahme', desc: 'Sauber, termintreu und mit gemeinsamer Schlussabnahme.' },
+];
+---
+<section class="process-mini-section">
+  <div class="process-inner">
+    <span class="section-label">So arbeiten wir</span>
+    <div class="head">
+      <h2 class="title">Ablauf eines Projekts. <span>In vier Schritten.</span></h2>
+      <a href="/badumbau#prozess" class="btn btn-ghost btn-sm">Ausführliche Version →</a>
+    </div>
+
+    <div class="steps reveal">
+      {steps.map((s, i) => (
+        <div class="step" class:list={{ 'step-last': i === steps.length - 1 }}>
+          <div class="step-num">{s.n}</div>
+          <div class="step-title">{s.title}</div>
+          <p class="step-desc">{s.desc}</p>
+          {i < steps.length - 1 && (
+            <div class="connector">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 5h4M5 3l2 2-2 2" stroke="var(--ink-3)" stroke-width="1.2"/></svg>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-mini-section {
+    padding: 96px 48px;
+    background: var(--bg-white);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .process-inner { max-width: 1440px; margin: 0 auto; }
+
+  .head {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 56px; gap: 24px; flex-wrap: wrap;
+  }
+
+  .title {
+    font-size: 48px; font-weight: 600;
+    letter-spacing: -0.025em; line-height: 1.02;
+    color: var(--ink); margin: 0;
+  }
+  .title span { color: var(--ink-3); }
+
+  .steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .step {
+    padding: 28px;
+    border-right: 1px solid var(--line);
+    position: relative;
+    background: var(--bg-white);
+  }
+  .step-last { border-right: none; }
+
+  .step-num {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-3); margin-bottom: 14px;
+  }
+
+  .step-title {
+    font-size: 20px; font-weight: 600;
+    letter-spacing: -0.01em; margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .step-desc {
+    font-size: 14px; color: var(--ink-2); line-height: 1.55; margin: 0;
+  }
+
+  .connector {
+    position: absolute; right: -10px; top: 50%;
+    transform: translateY(-50%);
+    width: 20px; height: 20px;
+    background: var(--bg-white); border: 1px solid var(--line);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2;
+  }
+
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: 1fr 1fr; }
+    .step { border-bottom: 1px solid var(--line); }
+    .step:nth-child(2) { border-right: none; }
+    .step:nth-child(4) { border-right: none; border-bottom: none; }
+    .step:nth-child(3) { border-bottom: none; }
+    .connector { display: none; }
+  }
+  @media (max-width: 600px) {
+    .process-mini-section { padding: 72px 20px; }
+    .title { font-size: 32px; }
+    .steps { grid-template-columns: 1fr; }
+    .step { border-right: none; }
+    .step-last { border-bottom: none; }
+  }
+</style>

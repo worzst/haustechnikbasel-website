@@ -1,0 +1,67 @@
+---
+---
+<section class="guarantee-section">
+  <div class="guarantee-inner">
+    <div class="grid">
+      <div>
+        <span class="section-label-dark">05 — Unsere Zusage</span>
+        <h2 class="title">Prozess-Garantie statt Marketing-Versprechen.</h2>
+      </div>
+      <div class="cards">
+        <div class="gcard">
+          <div class="gcard-num">GARANTIE 01</div>
+          <p class="gcard-text">Transparente Fix-Offerte — keine versteckten Zusatzkosten ohne Ihre vorherige Freigabe.</p>
+        </div>
+        <div class="gcard">
+          <div class="gcard-num">GARANTIE 02</div>
+          <p class="gcard-text">Offerte innerhalb von 7 Tagen. Wenn nicht — ist die Beratung für Sie kostenlos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .guarantee-section {
+    padding: 96px 48px;
+    background: var(--ink); color: #fff;
+  }
+  .guarantee-inner { max-width: 1440px; margin: 0 auto; }
+
+  .grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 64px; align-items: center;
+  }
+
+  .title {
+    font-size: 44px; font-weight: 600;
+    letter-spacing: -0.025em; line-height: 1.05;
+    margin: 0; color: #fff;
+  }
+
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  .gcard {
+    padding: 28px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+  }
+  .gcard-num {
+    font-family: var(--mono); font-size: 11px;
+    opacity: 0.5; margin-bottom: 12px;
+    letter-spacing: 0.06em;
+  }
+  .gcard-text {
+    font-size: 16px; font-weight: 500; line-height: 1.55;
+    margin: 0; color: rgba(255,255,255,0.9);
+  }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .guarantee-section { padding: 72px 20px; }
+    .title { font-size: 32px; }
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>

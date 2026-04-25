@@ -1,0 +1,104 @@
+---
+---
+<section class="hero">
+  <div class="hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Lokaler Fachbetrieb · Basel & Umgebung</div>
+      <h1 class="title">
+        Haustechnik<br />&amp; Sanitär in<br />Basel —&nbsp;<span>Badumbau</span><br />aus einer Hand.
+      </h1>
+      <p class="sub">
+        Planung, Sanitär und Koordination in einer einzigen Verantwortung — im Raum Basel seit 2008.
+      </p>
+      <div class="ctas">
+        <a href="/badumbau" class="btn btn-primary">
+          Badumbau anfragen
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <a href="#leistungen" class="btn btn-ghost">Alle Leistungen</a>
+      </div>
+    </div>
+
+    <div class="img-side">
+      <div class="img-ph" style="aspect-ratio:4/5; height:560px;">
+        <span class="img-tag">FOTO INHABER / TEAM</span>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">SEIT 2008 IN BASEL</div>
+        <div class="stat-num">340<span class="stat-plus">+</span></div>
+        <div class="stat-sub">Bäder umgebaut</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 80px 48px 96px;
+    background: var(--bg);
+  }
+
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 96px;
+    align-items: center;
+    max-width: 1440px; margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--blue);
+    margin-bottom: 24px;
+  }
+
+  .title {
+    font-size: clamp(44px, 6vw, 72px);
+    font-weight: 700; letter-spacing: -0.03em; line-height: 1.02;
+    margin: 0 0 28px;
+    color: var(--ink);
+  }
+  .title span { color: var(--blue); }
+
+  .sub {
+    font-size: 20px; line-height: 1.55;
+    color: var(--ink-2); margin: 0 0 40px;
+    max-width: 480px;
+  }
+
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .img-side { position: relative; }
+
+  .stat-card {
+    position: absolute; bottom: 32px; left: -32px;
+    background: var(--bg-white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    min-width: 200px;
+    box-shadow: 0 8px 32px -8px rgba(10,14,26,0.15);
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 11px; color: var(--ink-3);
+    margin-bottom: 8px; letter-spacing: 0.06em;
+  }
+  .stat-num {
+    font-size: 32px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--blue); line-height: 1;
+  }
+  .stat-plus { font-size: 18px; }
+  .stat-sub { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+
+  @media (max-width: 1100px) {
+    .hero-grid { gap: 56px; }
+    .stat-card { left: 0; }
+  }
+  @media (max-width: 768px) {
+    .hero { padding: 56px 20px 80px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .img-side { order: -1; }
+    .img-ph { height: 300px !important; }
+    .stat-card { position: relative; bottom: auto; left: auto; margin-top: 16px; }
+  }
+</style>

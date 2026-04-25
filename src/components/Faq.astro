@@ -1,0 +1,130 @@
+---
+const faqs = [
+  {
+    q: 'Was kostet eine Badsanierung ungefähr?',
+    a: 'Im Raum Basel rechnet man typischerweise mit CHF 25.000 – 60.000 für einen Komplett-Umbau. Der Endpreis hängt von Grösse, Materialwahl und Bausubstanz ab. Nach dem Vor-Ort-Termin erhalten Sie eine Fix-Offerte ohne versteckte Kosten.',
+  },
+  {
+    q: 'Wie lange dauert der Umbau?',
+    a: 'Ein Standard-Bad benötigt 3 bis 5 Wochen reine Bauzeit. Mit Planung und Materialbestellung sollten Sie 8 – 12 Wochen einrechnen. Der verbindliche Endtermin steht in der Offerte.',
+  },
+  {
+    q: 'Muss ich währenddessen ausziehen?',
+    a: 'Bei nur einem Bad: Sie können in der Wohnung bleiben, müssen aber mit ein paar Tagen ohne Dusche / WC rechnen. Auf Wunsch organisieren wir eine Provisorisch-Lösung.',
+  },
+  {
+    q: 'Übernehmen Sie auch Planung und Fliesenauswahl?',
+    a: 'Ja, gerne. Von der ersten Skizze bis zur Auswahl von Armaturen, Fliesen und Sanitärobjekten — auf Wunsch begleiten wir Sie auch zum Showroom.',
+  },
+  {
+    q: 'In welchen Regionen arbeiten Sie genau?',
+    a: 'Basel-Stadt und Umgebung — Riehen, Bettingen, Allschwil, Binningen, Bottmingen, Münchenstein, Reinach, Birsfelden und angrenzende Gemeinden im Baselbiet.',
+  },
+];
+---
+<section id="faq" class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-grid">
+      <div>
+        <span class="section-label">06 — FAQ</span>
+        <h2 class="title">Häufige Fragen.</h2>
+        <p class="faq-sub">Falls Ihre Frage nicht dabei ist, rufen Sie uns an — wir antworten persönlich.</p>
+      </div>
+
+      <div id="faq-list">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <button class="faq-btn">
+              {f.q}
+              <span class="faq-icon closed">+</span>
+            </button>
+            <div class="faq-content">{f.a}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    padding: 96px 48px;
+    background: var(--bg-white);
+  }
+  .faq-inner { max-width: 1440px; margin: 0 auto; }
+
+  .faq-grid {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 64px;
+  }
+
+  .title {
+    font-size: 44px; font-weight: 600;
+    letter-spacing: -0.025em; line-height: 1.02;
+    color: var(--ink); margin: 0 0 16px;
+  }
+  .faq-sub {
+    font-size: 16px; color: var(--ink-2);
+    line-height: 1.6; max-width: 280px; margin: 0;
+  }
+
+  .faq-item { border-bottom: 1px solid var(--line); }
+
+  .faq-btn {
+    width: 100%; text-align: left;
+    background: none; border: none;
+    padding: 22px 0;
+    font-size: 18px; font-weight: 500;
+    color: var(--ink); cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 24px;
+    font-family: inherit;
+    transition: color 0.15s;
+  }
+  .faq-btn:hover { color: var(--blue); }
+
+  .faq-icon {
+    flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; line-height: 1;
+    transition: all 0.3s;
+  }
+  .faq-icon.closed { background: var(--bg); color: var(--ink); }
+  .faq-icon.open { background: var(--blue); color: #fff; transform: rotate(45deg); }
+
+  .faq-content {
+    overflow: hidden; max-height: 0;
+    font-size: 15px; line-height: 1.65; color: var(--ink-2);
+    transition: max-height 0.35s ease, opacity 0.35s, padding 0.35s;
+    opacity: 0;
+  }
+  .faq-content.open { max-height: 220px; opacity: 1; padding-bottom: 22px; }
+
+  @media (max-width: 900px) {
+    .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+    .faq-sub { max-width: none; }
+  }
+  @media (max-width: 600px) {
+    .faq-section { padding: 72px 20px; }
+    .title { font-size: 36px; }
+    .faq-btn { font-size: 16px; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('#faq-list .faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-btn')!;
+    const content = item.querySelector('.faq-content')!;
+    const icon = btn.querySelector('.faq-icon')!;
+
+    btn.addEventListener('click', () => {
+      const isOpen = content.classList.contains('open');
+      document.querySelectorAll('#faq-list .faq-content.open').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('#faq-list .faq-icon.open').forEach(i => {
+        i.classList.remove('open'); i.classList.add('closed');
+      });
+      if (!isOpen) {
+        content.classList.add('open');
+        icon.classList.remove('closed'); icon.classList.add('open');
+      }
+    });
+  });
+</script>

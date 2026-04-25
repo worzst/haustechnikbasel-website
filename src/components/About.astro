@@ -1,0 +1,109 @@
+---
+const points = [
+  'Persönlicher Ansprechpartner für jedes Projekt',
+  'Saubere Baustellen als Selbstverständnis',
+  'Termintreue und proaktive Kommunikation',
+  'Fix-Offerten ohne versteckte Kosten',
+  'Koordination aller Gewerke aus einer Hand',
+  'Termine nach Ihren Arbeitszeiten möglich',
+];
+const regions = ['Basel-Stadt', 'Riehen', 'Bettingen', 'Allschwil', 'Binningen', 'Bottmingen', 'Münchenstein', 'Reinach', 'Birsfelden'];
+---
+<section id="ueber-uns" class="about">
+  <div class="about-inner">
+    <div class="about-grid">
+      <div class="img-side">
+        <div class="img-ph" style="height:480px; background:linear-gradient(135deg,#d0d4dd,#a8afbf,#72788c);">
+          <span class="img-tag">FOTO INHABER / TEAM</span>
+        </div>
+      </div>
+
+      <div class="content reveal">
+        <span class="section-label">Über uns &amp; Region</span>
+        <h2 class="title">Lokaler Betrieb.<br />Persönliche Verantwortung.</h2>
+        <p class="sub">
+          Seit 2008 führen wir Sanitär- und Haustechnikarbeiten im Raum Basel durch. Was mit einfachen Reparaturen begann, ist heute ein spezialisierter Betrieb für Komplett-Badumbauten mit klarem Fokus auf Qualität und Termintreue.
+        </p>
+
+        <div class="points">
+          {points.map(p => (
+            <div class="point">
+              <div class="check">✓</div>
+              <span>{p}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="regions-block">
+          <div class="regions-label">Unser Einsatzgebiet</div>
+          <div class="regions">
+            {regions.map(r => <span class="chip">{r}</span>)}
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="/badumbau" class="btn btn-primary">
+            Badumbau anfragen
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about { padding: 96px 48px; background: var(--bg); }
+  .about-inner { max-width: 1440px; margin: 0 auto; }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 80px; align-items: center;
+  }
+
+  .title {
+    font-size: 48px; font-weight: 600;
+    letter-spacing: -0.025em; line-height: 1.02;
+    color: var(--ink); margin: 0 0 24px;
+  }
+  .sub {
+    font-size: 18px; line-height: 1.6; color: var(--ink-2);
+    margin: 0 0 36px;
+  }
+
+  .points {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-bottom: 36px;
+  }
+  .point { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.5; color: var(--ink); }
+  .check {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--blue-bg); color: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; flex-shrink: 0; margin-top: 1px;
+  }
+
+  .regions-block { margin-bottom: 40px; }
+  .regions-label {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-3); text-transform: uppercase;
+    letter-spacing: 0.1em; margin-bottom: 12px;
+  }
+  .regions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    padding: 6px 12px; border: 1px solid var(--line);
+    border-radius: 999px; font-size: 12px; font-weight: 500;
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 1024px) {
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .img-side { order: -1; }
+    .img-ph { height: 320px !important; }
+  }
+  @media (max-width: 600px) {
+    .about { padding: 72px 20px; }
+    .title { font-size: 36px; }
+    .points { grid-template-columns: 1fr; }
+  }
+</style>

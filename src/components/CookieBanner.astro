@@ -1,0 +1,92 @@
+---
+---
+<div id="cookieBanner" class="banner" style="display:none" role="dialog" aria-label="Cookie-Einstellungen">
+  <p class="text">
+    Wir nutzen Cookies für Analyse und Werbung (Google Analytics, Google Ads).
+    <a href="/datenschutz">Mehr erfahren</a>
+  </p>
+  <div class="actions">
+    <button id="cookieDecline" class="btn-decline">Ablehnen</button>
+    <button id="cookieAccept" class="btn-accept">Akzeptieren</button>
+  </div>
+</div>
+
+<style>
+  .banner {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+    background: var(--bg-white);
+    border-top: 1px solid var(--line);
+    padding: 16px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    box-shadow: 0 -4px 24px -8px rgba(10,14,26,0.1);
+  }
+
+  .text {
+    margin: 0; font-size: 13px; color: var(--ink-2); line-height: 1.5;
+  }
+  .text a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
+
+  .actions { display: flex; gap: 10px; flex-shrink: 0; }
+
+  .btn-decline {
+    padding: 9px 18px; border-radius: var(--radius);
+    font-size: 13px; font-weight: 500;
+    background: transparent; color: var(--ink-2);
+    border: 1px solid var(--line); cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-decline:hover { border-color: var(--ink); color: var(--ink); }
+
+  .btn-accept {
+    padding: 9px 18px; border-radius: var(--radius);
+    font-size: 13px; font-weight: 500;
+    background: var(--blue); color: #fff;
+    border: none; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-accept:hover { background: var(--blue-hover); }
+
+  @media (max-width: 600px) {
+    .banner { padding: 16px 20px; }
+    .actions { width: 100%; }
+    .btn-decline, .btn-accept { flex: 1; text-align: center; }
+  }
+</style>
+
+<script>
+  const CONSENT_KEY = 'htb_consent';
+  const banner = document.getElementById('cookieBanner') as HTMLElement;
+
+  function updateConsent(granted: boolean) {
+    const val = granted ? 'granted' : 'denied';
+    if (typeof gtag !== 'undefined') {
+      gtag('consent', 'update', {
+        ad_storage: val,
+        ad_user_data: val,
+        ad_personalization: val,
+        analytics_storage: val,
+      });
+    }
+  }
+
+  const stored = localStorage.getItem(CONSENT_KEY);
+
+  if (stored === 'granted') {
+    updateConsent(true);
+  } else if (!stored) {
+    banner.style.display = 'flex';
+  }
+
+  document.getElementById('cookieAccept')!.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'granted');
+    updateConsent(true);
+    banner.style.display = 'none';
+  });
+
+  document.getElementById('cookieDecline')!.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'denied');
+    updateConsent(false);
+    banner.style.display = 'none';
+  });
+</script>

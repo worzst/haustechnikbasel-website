@@ -1,0 +1,128 @@
+---
+---
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-card">
+      <div class="cta-grid">
+        <div>
+          <span class="section-label">07 — Bereit?</span>
+          <h2 class="title">Ihr Bad in 3 – 12 Monaten?<br />Lassen Sie uns reden.</h2>
+          <p class="sub">
+            Eine Anfrage kostet 60 Sekunden — und Sie wissen innerhalb einer Woche, was Ihr Bad realistisch kostet.
+          </p>
+          <a href="tel:+41612000000" class="phone-link">061 200 00 00</a>
+          <div class="hours">Mo – Fr &nbsp;·&nbsp; 7:30 – 18:00 Uhr</div>
+        </div>
+
+        <div>
+          <h3 class="form-title">Schnell-Anfrage</h3>
+          <form id="cta-form">
+            <input name="_hp" type="text" style="display:none" tabindex="-1" autocomplete="off" />
+            <div class="form-row-2">
+              <input class="input" name="name" placeholder="Name" required />
+              <input class="input" name="tel" placeholder="Telefon" type="tel" required />
+            </div>
+            <input class="input" name="email" placeholder="E-Mail" type="email" required style="margin-bottom:12px;" />
+            <input class="input" name="plz" placeholder="PLZ / Ort" style="margin-bottom:16px;" required />
+            <button type="submit" class="btn btn-primary btn-full">
+              Erstberatung anfragen
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </form>
+          <div id="cta-success" style="display:none; text-align:center; padding:24px 0;">
+            <div style="font-size:28px; color:var(--blue); margin-bottom:6px;">✓</div>
+            <div style="font-weight:600; font-size:16px; color:var(--ink);">Anfrage erhalten!</div>
+            <div style="font-size:13px; color:var(--ink-2); margin-top:4px;">Wir melden uns innerhalb von 24h.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section { padding: 96px 48px; background: var(--bg); }
+  .cta-inner { max-width: 1440px; margin: 0 auto; }
+
+  .cta-card {
+    background: var(--bg-white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 48px;
+  }
+
+  .cta-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr;
+    gap: 56px; align-items: start;
+  }
+
+  .title {
+    font-size: 44px; font-weight: 600;
+    letter-spacing: -0.025em; line-height: 1.05;
+    color: var(--ink); margin: 0 0 20px;
+  }
+  .sub {
+    font-size: 16px; color: var(--ink-2); line-height: 1.6;
+    margin: 0 0 32px; max-width: 480px;
+  }
+
+  .phone-link {
+    font-size: 36px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--blue);
+    display: inline-block; transition: color 0.15s;
+  }
+  .phone-link:hover { color: var(--blue-hover); }
+  .hours { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+
+  .form-title {
+    font-size: 20px; font-weight: 600;
+    letter-spacing: -0.01em; margin: 0 0 18px; color: var(--ink);
+  }
+
+  .form-row-2 {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-bottom: 12px;
+  }
+
+  @media (max-width: 900px) {
+    .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+    .title { font-size: 32px; }
+  }
+  @media (max-width: 600px) {
+    .cta-section { padding: 72px 20px; }
+    .cta-card { padding: 28px 20px; }
+    .form-row-2 { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('cta-form') as HTMLFormElement | null;
+  const success = document.getElementById('cta-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.disabled = true;
+
+    const fd = new FormData(form);
+    const data: Record<string, string> = {};
+    fd.forEach((v, k) => { data[k] = String(v); });
+
+    try {
+      const res = await fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        if (success) success.style.display = 'block';
+        window.dataLayer?.push({ event: 'form_submit_success' });
+      } else {
+        btn.disabled = false;
+      }
+    } catch {
+      btn.disabled = false;
+    }
+  });
+</script>

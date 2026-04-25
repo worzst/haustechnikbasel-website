@@ -1,0 +1,157 @@
+---
+---
+<section id="leistungen" class="services">
+  <div class="services-inner">
+    <div class="head">
+      <div>
+        <span class="section-label">Kernleistungen</span>
+        <h2 class="title">Was wir für Sie tun.</h2>
+      </div>
+      <p class="head-sub">
+        Unser Fokus liegt auf Badumbauten. Darüber hinaus bieten wir Sanitärarbeiten und bald auch Heizungstechnik an.
+      </p>
+    </div>
+
+    <div class="cards reveal">
+      <!-- Featured: Badumbau -->
+      <div class="card featured">
+        <div class="badge badge-primary">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+          Kernkompetenz
+        </div>
+        <div class="card-label">01 — Badumbau</div>
+        <h3 class="card-title">Badsanierung &amp;<br />Badumbau</h3>
+        <p class="card-desc">
+          Komplett-Badumbau im Raum Basel. Planung, Sanitär, Koordination aller Gewerke — und eine Fix-Offerte mit einem einzigen Ansprechpartner.
+        </p>
+        <a href="/badumbau" class="card-link">
+          Mehr erfahren
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+
+      <!-- Sanitär -->
+      <div class="card">
+        <div class="badge badge-secondary">02 — Sanitär</div>
+        <h3 class="card-title card-title-ink">Sanitärarbeiten</h3>
+        <p class="card-desc">
+          Tropfende Armaturen, defekte Spülung, Wasserrohr-Schaden — wir erledigen kleinere Sanitärarbeiten im Raum Basel schnell und zuverlässig.
+        </p>
+        <p class="card-note">Keine eigene Seite — direkt anfragen</p>
+      </div>
+
+      <!-- Heizung -->
+      <div class="card card-muted">
+        <div class="badge badge-secondary">03 — Heizung</div>
+        <h3 class="card-title card-title-ink">Heizung &amp;<br />Wärmepumpe</h3>
+        <p class="card-desc">
+          Heizungssanierung, Wärmepumpen-Installation und Unterhalt — dieses Angebot bauen wir derzeit auf.
+        </p>
+        <div class="coming-soon">
+          <span class="dot"></span>
+          Demnächst verfügbar
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services { padding: 96px 48px; background: var(--bg); }
+  .services-inner { max-width: 1440px; margin: 0 auto; }
+
+  .head {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 48px;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .title {
+    font-size: 48px; font-weight: 600;
+    letter-spacing: -0.025em; line-height: 1.02;
+    color: var(--ink); margin: 0;
+  }
+  .head-sub {
+    font-size: 14px; color: var(--ink-2); max-width: 340px;
+    text-align: right; line-height: 1.6; margin: 0;
+  }
+
+  .cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+
+  .card {
+    background: var(--bg-white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 4px 20px -8px rgba(30,58,138,0.2);
+  }
+  .card.featured {
+    background: var(--blue); border-color: var(--blue); color: #fff;
+  }
+  .card.card-muted { opacity: 0.7; }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin-bottom: 20px;
+  }
+  .badge-primary { background: rgba(255,255,255,0.15); color: #fff; }
+  .badge-secondary { background: var(--bg); color: var(--ink-2); }
+
+  .card-label {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.55); margin-bottom: 8px;
+  }
+
+  .card-title {
+    font-size: 26px; font-weight: 600; letter-spacing: -0.02em;
+    margin: 0 0 12px; color: #fff;
+  }
+  .card-title-ink { color: var(--ink); }
+
+  .card-desc {
+    font-size: 15px; line-height: 1.6;
+    color: rgba(255,255,255,0.8); margin: 0 0 28px;
+  }
+  .card:not(.featured) .card-desc { color: var(--ink-2); }
+
+  .card-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 500; color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px;
+    transition: border-color 0.15s;
+  }
+  .card-link:hover { border-color: rgba(255,255,255,0.8); }
+
+  .card-note {
+    font-size: 13px; color: var(--ink-3);
+    font-family: var(--mono); text-transform: uppercase;
+    letter-spacing: 0.06em; margin: 0;
+  }
+
+  .coming-soon {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--ink-3);
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--ink-3); flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .cards { grid-template-columns: 1fr; }
+    .head-sub { text-align: left; }
+  }
+  @media (max-width: 600px) {
+    .services { padding: 72px 20px; }
+    .title { font-size: 36px; }
+  }
+</style>

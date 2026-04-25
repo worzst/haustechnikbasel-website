@@ -1,0 +1,37 @@
+---
+---
+<div class="img-strip">
+  <div class="strip-inner">
+    <div class="strip-grid">
+      <div class="img-ph" style="aspect-ratio:16/9; border-radius:6px 0 0 6px;">
+        <span class="img-tag">REF — 248 / Riehen · Komplett-Sanierung 2025</span>
+      </div>
+      <div class="img-ph" style="aspect-ratio:4/5; border-radius:0; background:linear-gradient(135deg,#b8c0cc,#8f9aaa,#5e697a);">
+        <span class="img-tag">REF — 251</span>
+      </div>
+      <div class="img-ph" style="aspect-ratio:4/5; border-radius:0 6px 6px 0; background:linear-gradient(135deg,#d0cfc8,#b0afa4,#7a7a6e);">
+        <span class="img-tag">REF — 253</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .img-strip { padding: 0 48px 80px; background: var(--bg); }
+  .strip-inner { max-width: 1440px; margin: 0 auto; }
+  .strip-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px;
+  }
+
+  @media (max-width: 900px) {
+    .img-strip { padding: 0 20px 60px; }
+    .strip-grid { grid-template-columns: 1fr 1fr; }
+    .strip-grid > :first-child { grid-column: 1 / -1; border-radius: 6px 6px 0 0 !important; }
+    .strip-grid > :nth-child(2) { border-radius: 0 0 0 6px !important; }
+    .strip-grid > :nth-child(3) { border-radius: 0 0 6px 0 !important; }
+  }
+  @media (max-width: 480px) {
+    .strip-grid { grid-template-columns: 1fr; }
+    .strip-grid > * { border-radius: var(--radius) !important; }
+  }
+</style>

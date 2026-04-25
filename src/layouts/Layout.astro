@@ -1,0 +1,86 @@
+---
+import CookieBanner from '../components/CookieBanner.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = 'Haustechnik Basel – Sanitär & Badumbau in Basel',
+  description = 'Lokaler Sanitär- und Haustechnikbetrieb in Basel. Spezialisiert auf hochwertige Badumbauten. Planung, Sanitär und Koordination aus einer Hand.',
+  noindex = false,
+} = Astro.props;
+
+const gtmId = import.meta.env.PUBLIC_GTM_ID ?? '';
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Consent Mode v2 defaults — must run before GTM -->
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage:         'denied',
+      ad_user_data:       'denied',
+      ad_personalization: 'denied',
+      analytics_storage:  'denied',
+      wait_for_update:    500,
+      region: ['AT','BE','BG','CH','CY','CZ','DE','DK','EE','ES',
+               'FI','FR','GB','GR','HR','HU','IE','IS','IT','LI',
+               'LT','LU','LV','MT','NL','NO','PL','PT','RO','SE','SI','SK'],
+    });
+    gtag('consent', 'default', {
+      ad_storage:         'granted',
+      ad_user_data:       'granted',
+      ad_personalization: 'granted',
+      analytics_storage:  'granted',
+    });
+  </script>
+
+  <!-- Google Tag Manager -->
+  {gtmId && <script is:inline define:vars={{ gtmId }}>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer',gtmId);
+  </script>}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  {gtmId && <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>}
+
+  <slot />
+  <CookieBanner />
+</body>
+</html>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>

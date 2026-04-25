@@ -1,0 +1,233 @@
+---
+---
+<section class="hero">
+  <div class="hero-inner">
+    <div class="tag" style="margin-bottom:28px;">
+      <span class="tag-dot"></span>
+      Basel · Riehen · Allschwil · Binningen · Münchenstein
+    </div>
+
+    <div class="hero-grid">
+      <!-- Left: text + stats -->
+      <div class="reveal">
+        <h1 class="title">
+          Komplett-<br />
+          Badumbau<br />
+          <span>aus einer Hand.</span>
+        </h1>
+        <p class="sub">
+          Wir planen und realisieren Ihr neues Bad im Raum Basel — Sanitär, Koordination und Fix-Offerte mit einem einzigen Ansprechpartner.
+        </p>
+        <div class="ctas">
+          <a href="#anfrage" class="btn btn-primary" id="cta-scroll">
+            Erstberatung anfragen
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+          <a href="tel:+41612000000" class="btn btn-ghost">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 1.5h2l1 3-1.5 1A8 8 0 0 0 8 9.5l1-1.5 3 1v2a1 1 0 0 1-1 1A10 10 0 0 1 1 2.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.3"/></svg>
+            061 200 00 00
+          </a>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><div class="stat-val">17+</div><div class="stat-lbl">Jahre in Basel</div></div>
+          <div class="stat"><div class="stat-val">340+</div><div class="stat-lbl">Bäder umgebaut</div></div>
+          <div class="stat"><div class="stat-val">7 Tage</div><div class="stat-lbl">bis zur Fix-Offerte</div></div>
+          <div class="stat"><div class="stat-val">24 h</div><div class="stat-lbl">Rückruf-Garantie</div></div>
+        </div>
+      </div>
+
+      <!-- Right: sticky form -->
+      <div id="anfrage" class="form-card">
+        <div class="form-top">
+          <span class="tag"><span class="tag-dot"></span>Kostenlos</span>
+          <span class="mono" style="font-size:11px; color:var(--ink-3);">FORM-01</span>
+        </div>
+        <h3 class="form-title">Erstberatung anfragen</h3>
+        <p class="form-sub">Wir melden uns innerhalb von 24 Stunden — ehrliche Einschätzung, kein Verkaufsdruck.</p>
+
+        <form id="anfrage-form">
+          <input name="_hp" type="text" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="form-row">
+            <label for="f-name" class="form-label">Name</label>
+            <input id="f-name" name="name" class="input" placeholder="Vor- und Nachname" required />
+          </div>
+
+          <div class="form-row-2">
+            <div>
+              <label for="f-tel" class="form-label">Telefon</label>
+              <input id="f-tel" name="tel" class="input" placeholder="061 …" type="tel" required />
+            </div>
+            <div>
+              <label for="f-plz" class="form-label">PLZ / Ort</label>
+              <input id="f-plz" name="plz" class="input" placeholder="4051 Basel" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="f-email" class="form-label">E-Mail</label>
+            <input id="f-email" name="email" class="input" placeholder="name@email.ch" type="email" required />
+          </div>
+
+          <div class="form-row">
+            <label for="f-timing" class="form-label">Wann geplant?</label>
+            <select id="f-timing" name="timing" class="input" required>
+              <option value="" disabled selected>Zeitrahmen wählen</option>
+              <option>0 – 3 Monate</option>
+              <option>3 – 6 Monate</option>
+              <option>6 – 12 Monate</option>
+              <option>Noch unklar</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="f-msg" class="form-label">Beschreibung <span style="color:var(--ink-3); font-weight:400;">(optional)</span></label>
+            <textarea id="f-msg" name="message" class="input" rows={2} placeholder="Kurz zur Wohnung, zum Bad…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">
+            Anfrage senden
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+          <p class="form-note">Mit Absenden stimmen Sie unserer <a href="/datenschutz">Datenschutzerklärung</a> zu.</p>
+        </form>
+
+        <div id="anfrage-success" class="success-msg" style="display:none;">
+          <div class="success-icon">✓</div>
+          <div class="success-title">Anfrage erhalten!</div>
+          <div class="success-sub">Wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding: 64px 48px 80px; background: var(--bg); }
+  .hero-inner { max-width: 1440px; margin: 0 auto; }
+
+  .hero-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    gap: 64px; align-items: start;
+  }
+
+  .title {
+    font-size: clamp(44px, 6vw, 72px);
+    font-weight: 700; letter-spacing: -0.03em; line-height: 1.02;
+    margin: 0 0 24px; color: var(--ink);
+  }
+  .title span { color: var(--blue); }
+
+  .sub {
+    font-size: 20px; line-height: 1.5; color: var(--ink-2);
+    max-width: 540px; margin: 0 0 36px;
+  }
+
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+    margin-top: 64px; padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .stat-val {
+    font-size: 32px; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--blue); line-height: 1;
+  }
+  .stat-lbl { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+
+  /* Sticky form card */
+  .form-card {
+    background: var(--bg-white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+    position: sticky; top: 76px;
+    box-shadow: 0 8px 32px -8px rgba(10,14,26,0.15);
+  }
+
+  .form-top {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .form-title {
+    font-size: 22px; font-weight: 600; letter-spacing: -0.01em;
+    margin: 14px 0 6px; color: var(--ink);
+  }
+  .form-sub {
+    font-size: 13px; color: var(--ink-2); margin: 0 0 20px; line-height: 1.55;
+  }
+
+  .form-row { margin-bottom: 14px; }
+  .form-row-2 {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .form-label {
+    display: block; font-size: 12px; font-weight: 500;
+    color: var(--ink-2); margin-bottom: 6px;
+  }
+
+  .form-note {
+    font-size: 11px; color: var(--ink-3);
+    line-height: 1.5; margin-top: 12px; text-align: center;
+  }
+  .form-note a { color: var(--ink-3); text-decoration: underline; }
+
+  .success-msg { text-align: center; padding: 24px 0; }
+  .success-icon { font-size: 36px; color: var(--blue); margin-bottom: 10px; }
+  .success-title { font-weight: 600; font-size: 18px; color: var(--ink); margin-bottom: 6px; }
+  .success-sub { font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+
+  @media (max-width: 1100px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .form-card { position: relative; top: auto; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .hero { padding: 48px 20px 64px; }
+    .stats { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-row-2 { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  document.getElementById('cta-scroll')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('anfrage')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  const form = document.getElementById('anfrage-form') as HTMLFormElement | null;
+  const success = document.getElementById('anfrage-success');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet…';
+
+    const fd = new FormData(form);
+    const data: Record<string, string> = {};
+    fd.forEach((v, k) => { data[k] = String(v); });
+
+    try {
+      const res = await fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        if (success) success.style.display = 'block';
+        window.dataLayer?.push({ event: 'form_submit_success' });
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Fehler – nochmals versuchen';
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Fehler – nochmals versuchen';
+    }
+  });
+</script>

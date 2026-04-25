@@ -1,0 +1,92 @@
+---
+const yes = [
+  'Sie Eigentümer einer Wohnung oder eines Hauses im Raum Basel sind',
+  'Ihr Bad 15+ Jahre alt ist',
+  'Sie in den nächsten 3 – 12 Monaten umbauen möchten',
+  'Sie Wert auf saubere Ausführung und klare Kommunikation legen',
+];
+const no = [
+  'Sie nur eine Kleinreparatur suchen',
+  'Sie ein 300-CHF Kosmetik-Update erwarten',
+  'Ihr Budget unter 15.000 CHF liegt',
+  'Sie nur einen Preis vergleichen, ohne Beratung zu wollen',
+];
+---
+<section class="qualifier-section">
+  <div class="qualifier-inner">
+    <span class="section-label">03 — Passt das?</span>
+    <h2 class="title">Wir sind ehrlich: nicht jedes Projekt passt zu uns.</h2>
+
+    <div class="grid reveal">
+      <div class="card yes-card">
+        <div class="card-head">
+          <div class="icon-yes">✓</div>
+          <span class="qlabel-yes">Geeignet, wenn</span>
+        </div>
+        {yes.map((item, i) => (
+          <div class:list={['qi', { 'qi-last': i === yes.length - 1 }]}>{item}</div>
+        ))}
+      </div>
+
+      <div class="card no-card">
+        <div class="card-head">
+          <div class="icon-no">✕</div>
+          <span class="qlabel-no">Nicht geeignet, wenn</span>
+        </div>
+        {no.map((item, i) => (
+          <div class:list={['qi', 'qi-muted', { 'qi-last': i === no.length - 1 }]}>{item}</div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .qualifier-section {
+    padding: 96px 48px;
+    background: var(--bg-white);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .qualifier-inner { max-width: 1440px; margin: 0 auto; }
+
+  .title {
+    font-size: 48px; font-weight: 600;
+    letter-spacing: -0.025em; line-height: 1.02;
+    color: var(--ink); margin: 0 0 48px; max-width: 700px;
+  }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  .card { padding: 32px; border-radius: var(--radius); border: 1px solid var(--line); }
+  .yes-card { background: var(--bg-white); }
+  .no-card { background: var(--bg); }
+
+  .card-head {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 24px;
+  }
+  .icon-yes, .icon-no {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 14px;
+  }
+  .icon-yes { background: var(--blue-bg); color: var(--blue); }
+  .icon-no { background: var(--line); color: var(--ink-3); }
+
+  .qlabel-yes { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--blue); }
+  .qlabel-no  { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-3); }
+
+  .qi {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid var(--line);
+    font-size: 15px; line-height: 1.5; color: var(--ink);
+  }
+  .qi::before { content: ''; }
+  .qi-muted { color: var(--ink-2); }
+  .qi-last { border-bottom: none; }
+
+  @media (max-width: 768px) {
+    .qualifier-section { padding: 72px 20px; }
+    .title { font-size: 32px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
