@@ -1,6 +1,6 @@
 ---
 interface Props {
-  activePage?: 'home' | 'badumbau' | 'legal';
+  activePage?: 'home' | 'badsanierung' | 'legal';
 }
 const { activePage = 'home' } = Astro.props;
 const p = activePage === 'home' ? '' : '/';
@@ -23,7 +23,7 @@ const p = activePage === 'home' ? '' : '/';
   </button>
 
   <nav class="nav-links" id="nav-links">
-    {activePage === 'badumbau' ? (
+    {activePage === 'badsanierung' ? (
       <>
         <a href="/">Startseite</a>
         <a href="#leistungen">Leistungen</a>
@@ -36,7 +36,7 @@ const p = activePage === 'home' ? '' : '/';
         <a href={p || '/'} class={activePage === 'home' ? 'active' : ''}>Startseite</a>
         <a href={`${p}#leistungen`}>Leistungen</a>
         <a href={`${p}#ueber-uns`}>Über uns</a>
-        <a href="/badumbau" class="nav-cta-link">Badumbau</a>
+        <a href="/badsanierung" class="nav-cta-link">Badumbau</a>
       </>
     )}
     <a href="tel:+41612000000" class="btn btn-ghost btn-sm phone-link">
