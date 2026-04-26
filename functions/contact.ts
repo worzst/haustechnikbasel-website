@@ -5,7 +5,11 @@ interface Env {
 }
 
 const escape = (s: string) =>
-  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   let data: Record<string, string>;
@@ -31,28 +35,28 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     <p><strong>Name:</strong> ${escape(name)}</p>
     <p><strong>Telefon:</strong> ${escape(tel)}</p>
     <p><strong>E-Mail:</strong> <a href="mailto:${escape(email)}">${escape(email)}</a></p>
-    ${plz ? `<p><strong>PLZ / Ort:</strong> ${escape(plz)}</p>` : ''}
-    ${timing ? `<p><strong>Zeitrahmen:</strong> ${escape(timing)}</p>` : ''}
-    ${message ? `<p><strong>Beschreibung:</strong><br>${escape(message).replace(/\n/g, '<br>')}</p>` : ''}
+    ${plz ? `<p><strong>PLZ / Ort:</strong> ${escape(plz)}</p>` : ""}
+    ${timing ? `<p><strong>Zeitrahmen:</strong> ${escape(timing)}</p>` : ""}
+    ${message ? `<p><strong>Beschreibung:</strong><br>${escape(message).replace(/\n/g, "<br>")}</p>` : ""}
   `;
 
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
     headers: {
       Authorization: `Bearer ${env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       from: env.CONTACT_FROM,
       to: env.CONTACT_TO,
       reply_to: email,
-      subject: `Badumbau-Anfrage von ${escape(name)}`,
+      subject: `Badsanierungs-Anfrage von ${escape(name)}`,
       html,
     }),
   });
 
   if (!res.ok) {
-    console.error('Resend error:', await res.text());
+    console.error("Resend error:", await res.text());
     return Response.json({ ok: false }, { status: 500 });
   }
 
