@@ -152,7 +152,7 @@ Key: `htb_consent` in localStorage. On load: if `granted` → call `gtag consent
 ## Business details (placeholders — replace before launch)
 - **Company name:** Haustechnik Basel GmbH (confirm legal name)
 - **Address:** Musterstrasse 1, 4051 Basel (replace with real address)
-- **Phone:** 061 200 00 00 (replace throughout — Nav, BadumbauHero, FinalCta, Footer, Faq section)
+- **Phone:** 061 539 17 58 / +41615391758
 - **Email:** info@haustechnikbasel.ch
 - **Handelsregister:** CH-… (placeholder)
 - **MwSt-Nr.:** CHE-… (placeholder)
@@ -160,7 +160,6 @@ Key: `htb_consent` in localStorage. On load: if `granted` → call `gtag consent
 ---
 
 ## TODO
-1. **Real phone number** — replace `061 200 00 00` / `+41612000000` in Nav, BadumbauHero, FinalCta, Footer
 2. **Real address** — replace `Musterstrasse 1, 4051 Basel` in Footer, Impressum
 3. **Legal details** — fill Handelsregister + MwSt-Nr. in Footer, Impressum
 4. **Real project photos** — replace gradient image placeholders in Projects, ReferenzenTeaser, ImageStrip, Hero, About
