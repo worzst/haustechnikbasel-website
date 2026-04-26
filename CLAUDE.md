@@ -115,6 +115,7 @@ On success: client pushes `{ event: 'form_submit_success' }` to `dataLayer` for 
 | `RESEND_API_KEY` | Runtime | `re_...` from resend.com |
 | `CONTACT_TO` | Runtime | `info@haustechnikbasel.ch` |
 | `CONTACT_FROM` | Runtime | `forms@haustechnikbasel.ch` (verified Resend domain) |
+| `CONTACT_BCC` | Runtime | your personal email address for BCC on every submission |
 
 Local dev: `.env` for build vars, `.dev.vars` for runtime vars (both gitignored).
 

@@ -2,6 +2,7 @@ interface Env {
   RESEND_API_KEY: string;
   CONTACT_TO: string;
   CONTACT_FROM: string;
+  CONTACT_BCC: string;
 }
 
 const escape = (s: string) =>
@@ -49,6 +50,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     body: JSON.stringify({
       from: env.CONTACT_FROM,
       to: env.CONTACT_TO,
+      ...(env.CONTACT_BCC ? { bcc: env.CONTACT_BCC } : {}),
       reply_to: email,
       subject: `Badsanierungs-Anfrage von ${escape(name)}`,
       html,
