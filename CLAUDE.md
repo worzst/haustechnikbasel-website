@@ -16,6 +16,16 @@ Apex `haustechnikbasel.ch` → redirect to `www` via Cloudflare Redirect Rule.
 
 ---
 
+## Legal structure
+- **Website operator:** ictira GmbH, Aufgendsweg 3, 4455 Zunzgen (CHE-476.809.964)
+- **Work executed by:** Helvatec Haustechnik KlG (CHE-460.133.049)
+- This split is intentional and reflected in `impressum.astro` and `datenschutz.astro`. Do not change it.
+- Phone: 061 539 17 58 / +41615391758
+- Email: info@haustechnikbasel.ch
+- Footer address (public-facing): Lehenmattstrasse 353, 4052 Basel
+
+---
+
 ## File structure
 ```
 src/
@@ -111,13 +121,22 @@ On success: client pushes `{ event: 'form_submit_success' }` to `dataLayer` for 
 **Env vars** (Cloudflare Pages → Settings → Environment variables):
 | Variable | Scope | Value |
 |---|---|---|
-| `PUBLIC_GTM_ID` | Build | `GTM-XXXXXXX` |
+| `PUBLIC_GTM_ID` | Build | real GTM container ID |
 | `RESEND_API_KEY` | Runtime | `re_...` from resend.com |
 | `CONTACT_TO` | Runtime | `info@haustechnikbasel.ch` |
-| `CONTACT_FROM` | Runtime | `forms@haustechnikbasel.ch` (verified Resend domain) |
-| `CONTACT_BCC` | Runtime | your personal email address for BCC on every submission |
+| `CONTACT_FROM` | Runtime | sender address on verified ictira domain in Resend |
+| `CONTACT_BCC` | Runtime | personal email to BCC on every submission (optional) |
 
-Local dev: `.env` for build vars, `.dev.vars` for runtime vars (both gitignored).
+Local dev: `.env` for build vars, `.dev.vars` for runtime vars (both gitignored). See `.env.example`.
+
+**Note on `CONTACT_FROM`:** uses the ictira Resend sending domain — no need to verify haustechnikbasel.ch in Resend. The `reply_to` is set to the customer's email so replies go directly to them.
+
+---
+
+## Email for info@haustechnikbasel.ch
+No mailbox exists on this domain yet. Recommended approach:
+- **Cloudflare Email Routing** (free) — forwards `info@haustechnikbasel.ch` to an existing inbox. Set up in Cloudflare dashboard → domain → Email → Email Routing. Sufficient for receiving form notifications.
+- **Google Workspace** (~6 CHF/month) — only needed if actively replying from `info@haustechnikbasel.ch`.
 
 ---
 
@@ -138,6 +157,8 @@ Stagger: `data-delay="100|150|200|300"` (ms).
 2. **GA4 Event: generate_lead** — trigger: Custom Event `form_submit_success`
 3. **Google Ads Conversion** — trigger: Custom Event `form_submit_success`
 
+GTM is already integrated in `Layout.astro` via `PUBLIC_GTM_ID`. Do not add Google Ads tags directly to the page — configure them inside GTM.
+
 ### CookieBanner
 Key: `htb_consent` in localStorage. On load: if `granted` → call `gtag consent update`; if no value → show banner.
 
@@ -149,21 +170,9 @@ Key: `htb_consent` in localStorage. On load: if `granted` → call `gtag consent
 
 ---
 
-## Business details (placeholders — replace before launch)
-- **Company name:** Haustechnik Basel GmbH (confirm legal name)
-- **Address:** Musterstrasse 1, 4051 Basel (replace with real address)
-- **Phone:** 061 539 17 58 / +41615391758
-- **Email:** info@haustechnikbasel.ch
-- **Handelsregister:** CH-… (placeholder)
-- **MwSt-Nr.:** CHE-… (placeholder)
-
----
-
-## TODO
-2. **Real address** — replace `Musterstrasse 1, 4051 Basel` in Footer, Impressum
-3. **Legal details** — fill Handelsregister + MwSt-Nr. in Footer, Impressum
-4. **Real project photos** — replace gradient image placeholders in Projects, ReferenzenTeaser, ImageStrip, Hero, About
-5. **Resend domain** — verify `forms@haustechnikbasel.ch` sending domain in Resend dashboard
-6. **Google Ads conversion tag** — in GTM: create GA4 Event + Google Ads Conversion tag triggered by `form_submit_success`
-7. **Google Ads SEO** — verify `<title>` and `<meta description>` on `/badsanierung` contain keyword "Badsanierung Basel"
-8. **Google rating** — update rating in Projects.astro and TrustStrip.astro once real reviews exist
+## TODO (remaining before / after launch)
+1. **Real project photos** — replace gradient placeholders in `Projects.astro`, `ReferenzenTeaser.astro`, `ImageStrip.astro`, `Hero.astro`, `About.astro`
+2. **Cloudflare env vars** — set `PUBLIC_GTM_ID`, `RESEND_API_KEY`, `CONTACT_FROM`, `CONTACT_BCC` in Cloudflare Pages
+3. **GTM tags** — configure GA4 + Google Ads Conversion tags inside GTM triggered by `form_submit_success`
+4. **info@ email** — set up Cloudflare Email Routing for `info@haustechnikbasel.ch`
+5. **Google rating** — update rating in `Projects.astro` and `TrustStrip.astro` once real reviews exist
